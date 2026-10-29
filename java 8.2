@@ -1,0 +1,53 @@
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+// Step-2: Create a class that extends Application
+public class DisplayTextAndImage extends Application {
+
+    // Step-3: Override the start method
+    @Override
+    public void start(Stage primaryStage) {
+        // Set the window title
+        primaryStage.setTitle("Text and Image Display");
+
+        // Step-4: Create a Label with the specified text
+        Label label = new Label("Hello, JavaFX!");
+        
+        // Optional styling to make the label visually clear
+        label.setStyle("-fx-font-size: 20px; -fx-font-weight: bold;");
+
+        // Step-5: Load an image from a file path
+        // Ensure "imagePath.jpg" is present in your project's root folder, 
+        // or replace it with a valid path.
+        Image image = new Image("file:imagePath.jpg");
+        ImageView imageView = new ImageView(image);
+        
+        // Setting image size as per structural constraints
+        imageView.setFitWidth(400);
+        imageView.setFitHeight(300);
+        imageView.setPreserveRatio(true); // Prevents distortion of the image
+
+        // Step-6: Create a VBox layout container
+        VBox vbox = new VBox(20); // 20 pixels spacing between label and image
+        vbox.setAlignment(Pos.CENTER); // Centering components visually inside the window
+        vbox.getChildren().addAll(label, imageView);
+
+        // Step-7: Create a Scene with the VBox as root node (600x400 pixels)
+        Scene scene = new Scene(vbox, 600, 400);
+
+        // Step-8: Set the scene on the stage and display it
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    // Step-9: Main method to launch the application
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
